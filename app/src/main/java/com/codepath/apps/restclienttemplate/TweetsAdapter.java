@@ -67,12 +67,14 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         ImageView ivProfileImage;
         TextView tvBody;
         TextView tvScreenName;
+        TextView tvStamp;
 
         // itemView refers to each row, what we see in our activity_timeline.xml
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
             tvBody = itemView.findViewById(R.id.tvBody);
+            tvStamp = itemView.findViewById(R.id.tvStamp);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
         }
 
@@ -80,6 +82,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         public void bind(Tweet tweet) {
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screeName);
+            tvStamp.setText(tweet.getFormattedTimestamp());
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
         }
     }

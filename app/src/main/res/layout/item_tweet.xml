@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
 
     <ImageView
         android:id="@+id/ivProfileImage"
@@ -29,10 +30,22 @@
         android:id="@+id/tvBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvScreenName"
+        android:layout_below="@+id/tvStamp"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="0dp"
         android:text="This is my first tweet!!" />
+
+    <TextView
+        android:id="@+id/tvStamp"
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="63dp"
+        android:layout_toEndOf="@+id/tvScreenName"
+        android:text="25 mins ago" />
 
 </RelativeLayout>

@@ -25,6 +25,7 @@ public class ComposeActivity extends AppCompatActivity {
 
     public static final String TAG = "ComposeActivity";
     public static final int MAX_TWEET_LENGTH = 140;
+    public static final int MAX_CHAR_LENGTH = 280;
 
     EditText etCompose;
     Button btnTweet;
@@ -49,9 +50,7 @@ public class ComposeActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 // Fires right as the text is being changed (even supplies the range of text)
-                charCount.setText(String.valueOf(start + 1));
-                if (start > 280){
-
+                if (start > MAX_CHAR_LENGTH){
                     btnTweet.setEnabled(false);
                 }
             }
@@ -60,13 +59,12 @@ public class ComposeActivity extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start, int count,
                                           int after) {
                 // Fires right before text is changing
-                start = 0;
-                charCount.setText(String.valueOf(start));
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 // Fires right after the text has changed
+                charCount.setText(s.toString().length() + "/280");
 
             }
         });

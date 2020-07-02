@@ -48,23 +48,25 @@ public class ComposeActivity extends AppCompatActivity {
         etCompose.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
                 // Fires right as the text is being changed (even supplies the range of text)
-                if (start > MAX_CHAR_LENGTH){
-                    btnTweet.setEnabled(false);
-                }
+
             }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count,
                                           int after) {
                 // Fires right before text is changing
+                btnTweet.setEnabled(true);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 // Fires right after the text has changed
-                charCount.setText(s.toString().length() + "/280");
+//                charCount.setText(s.toString().length() + "/280");
+                charCount.setText(MAX_CHAR_LENGTH - s.toString().length() + "");
+                if (MAX_CHAR_LENGTH - s.toString().length() < 0) {
+                    btnTweet.setEnabled(false);
+                }
 
             }
         });
